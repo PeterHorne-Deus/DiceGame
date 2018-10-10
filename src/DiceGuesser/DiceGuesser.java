@@ -12,9 +12,12 @@ package DiceGuesser;
  */
 public class DiceGuesser extends javax.swing.JFrame {
 
-    int randomNumber;
-    int six,twenty,forty;
-    int choosenDie;
+    //Decalring Variables Publicly 
+    int randomNumber; //Setting the random dice number to a variable
+    int six,twenty,forty; //Choosing which die you are using to use the random number
+    int choosenDie; //Setting the number in the random number generator depending on die choosen
+    int guess,diceRolls,correctGuesses,incorrectGuesses,percentCorrectGuesses;
+    
     
     public DiceGuesser() {
         initComponents();
