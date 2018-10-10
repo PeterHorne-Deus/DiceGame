@@ -151,8 +151,6 @@ public class DiceGuesser extends javax.swing.JFrame {
         
         choosenDie = 5;
         
-        
-        System.out.println(randomNumber);
     }//GEN-LAST:event_sixSideRBtnActionPerformed
 
     private void fortySideRBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fortySideRBtnActionPerformed
@@ -161,8 +159,8 @@ public class DiceGuesser extends javax.swing.JFrame {
         sixSideRBtn.setEnabled(false);
         promptLbl.setText("Enter A Number Between 1 and 40");
         
-        randomNumber = (int)Math.round(Math.random()*39+1);
-        System.out.println(randomNumber);
+        
+        choosenDie = 39;
     }//GEN-LAST:event_fortySideRBtnActionPerformed
 
     private void twentySideRBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_twentySideRBtnActionPerformed
@@ -171,13 +169,12 @@ public class DiceGuesser extends javax.swing.JFrame {
         sixSideRBtn.setEnabled(false);
         promptLbl.setText("Enter A Number Between 1 and 20");
         
-        randomNumber = (int)Math.round(Math.random()*19+1);
-        
-        System.out.println(randomNumber);
+        choosenDie = 19;
     }//GEN-LAST:event_twentySideRBtnActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
+        randomNumber = (int)Math.round(Math.random()*choosenDie+1);
         System.out.println(randomNumber);
     }//GEN-LAST:event_jButton1ActionPerformed
 
