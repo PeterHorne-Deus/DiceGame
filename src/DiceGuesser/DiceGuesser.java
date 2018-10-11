@@ -6,17 +6,17 @@
 
 package DiceGuesser;
 
-/**
- *
- * @author pehor9164
- */
+import java.text.*;
+import java.awt.Color;
+
 public class DiceGuesser extends javax.swing.JFrame {
 
     //Decalring Variables Publicly 
     int randomNumber; //Setting the random dice number to a variable
     int six,twenty,forty; //Choosing which die you are using to use the random number
     int choosenDie; //Setting the number in the random number generator depending on die choosen
-    int guess,diceRolls,correctGuesses,incorrectGuesses,percentCorrectGuesses;
+    int guess,diceRolls,correctGuesses,incorrectGuesses;
+    double percentCorrectGuesses;
     
     
     public DiceGuesser() {
@@ -36,9 +36,7 @@ public class DiceGuesser extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jRadioButton1 = new javax.swing.JRadioButton();
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        jPanel1 = new javax.swing.JPanel();
+        backgroundPnl = new javax.swing.JPanel();
         titleLbl = new javax.swing.JLabel();
         promptLbl = new javax.swing.JLabel();
         userIntTxtField = new javax.swing.JTextField();
@@ -46,7 +44,6 @@ public class DiceGuesser extends javax.swing.JFrame {
         numberOfCorrectGuessesLbl = new javax.swing.JLabel();
         numberOfIncorrectGuessesLbl = new javax.swing.JLabel();
         percentOfCorrectGuessesLbl = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
         twentySideRBtn = new javax.swing.JRadioButton();
         fortySideRBtn = new javax.swing.JRadioButton();
         sixSideRBtn = new javax.swing.JRadioButton();
@@ -61,46 +58,42 @@ public class DiceGuesser extends javax.swing.JFrame {
         stepThreeLbl = new javax.swing.JLabel();
         instructionsLbl = new javax.swing.JLabel();
         messageLbl = new javax.swing.JLabel();
-
-        jRadioButton1.setText("jRadioButton1");
+        guessAgainLbl = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        backgroundPnl.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         titleLbl.setFont(new java.awt.Font("TI Uni", 0, 18)); // NOI18N
         titleLbl.setText("Dan's Dice Denomination Decider ");
-        jPanel1.add(titleLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
+        backgroundPnl.add(titleLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, -1, -1));
 
         promptLbl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         promptLbl.setText("Enter A Number Between 1 and 6");
-        jPanel1.add(promptLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
+        backgroundPnl.add(promptLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         userIntTxtField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 userIntTxtFieldActionPerformed(evt);
             }
         });
-        jPanel1.add(userIntTxtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 80, -1));
+        backgroundPnl.add(userIntTxtField, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 80, -1));
 
         numberOfDiceRollsLbl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         numberOfDiceRollsLbl.setText("Number Of Dice Rolls: ");
-        jPanel1.add(numberOfDiceRollsLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 160, -1));
+        backgroundPnl.add(numberOfDiceRollsLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 160, -1));
 
         numberOfCorrectGuessesLbl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         numberOfCorrectGuessesLbl.setText("Number Of Correct Guesses: ");
-        jPanel1.add(numberOfCorrectGuessesLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 190, -1));
+        backgroundPnl.add(numberOfCorrectGuessesLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 190, -1));
 
         numberOfIncorrectGuessesLbl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         numberOfIncorrectGuessesLbl.setText("Number Of Incorrect Guesses:");
-        jPanel1.add(numberOfIncorrectGuessesLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 200, -1));
+        backgroundPnl.add(numberOfIncorrectGuessesLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 200, -1));
 
         percentOfCorrectGuessesLbl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         percentOfCorrectGuessesLbl.setText("Percentage Of Correct Guesses: ");
-        jPanel1.add(percentOfCorrectGuessesLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, -1, -1));
-
-        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 252, 220, 0));
+        backgroundPnl.add(percentOfCorrectGuessesLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, -1, -1));
 
         twentySideRBtn.setText("20 Sides");
         twentySideRBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -108,7 +101,7 @@ public class DiceGuesser extends javax.swing.JFrame {
                 twentySideRBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(twentySideRBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, -1, -1));
+        backgroundPnl.add(twentySideRBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, -1, -1));
 
         fortySideRBtn.setText("40 sides");
         fortySideRBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -116,7 +109,7 @@ public class DiceGuesser extends javax.swing.JFrame {
                 fortySideRBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(fortySideRBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, -1, -1));
+        backgroundPnl.add(fortySideRBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, -1, -1));
 
         sixSideRBtn.setText("6 sides");
         sixSideRBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -124,11 +117,11 @@ public class DiceGuesser extends javax.swing.JFrame {
                 sixSideRBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(sixSideRBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, -1, -1));
+        backgroundPnl.add(sixSideRBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, -1, -1));
 
         chooseTypeOfDieLbl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         chooseTypeOfDieLbl.setText("Choose One Type Of Die");
-        jPanel1.add(chooseTypeOfDieLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, -1, -1));
+        backgroundPnl.add(chooseTypeOfDieLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, -1, -1));
 
         guessBtn.setText("Guess");
         guessBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -136,53 +129,57 @@ public class DiceGuesser extends javax.swing.JFrame {
                 guessBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(guessBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
+        backgroundPnl.add(guessBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
 
         percentageCorrectLbl.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        percentageCorrectLbl.setText("0");
-        jPanel1.add(percentageCorrectLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, -1, -1));
+        percentageCorrectLbl.setText("0%");
+        backgroundPnl.add(percentageCorrectLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, -1, -1));
 
         diceRollsNumLbl.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         diceRollsNumLbl.setText("0");
-        jPanel1.add(diceRollsNumLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, -1, -1));
+        backgroundPnl.add(diceRollsNumLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, -1, -1));
 
         correctGuessesNumLbl.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         correctGuessesNumLbl.setText("0");
-        jPanel1.add(correctGuessesNumLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, -1, -1));
+        backgroundPnl.add(correctGuessesNumLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, -1, -1));
 
         incorrectGuessesNumLbl.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         incorrectGuessesNumLbl.setText("0");
-        jPanel1.add(incorrectGuessesNumLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, -1, -1));
+        backgroundPnl.add(incorrectGuessesNumLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, -1, -1));
 
         stepOneLbl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         stepOneLbl.setText("1) Choose a type of die");
-        jPanel1.add(stepOneLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, -1, -1));
+        backgroundPnl.add(stepOneLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, -1, -1));
 
         stepTwoLbl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         stepTwoLbl.setText("2) Make guess in the text feild");
-        jPanel1.add(stepTwoLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, -1, -1));
+        backgroundPnl.add(stepTwoLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, -1, -1));
 
         stepThreeLbl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         stepThreeLbl.setText("3) Press Guess");
-        jPanel1.add(stepThreeLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, -1, -1));
+        backgroundPnl.add(stepThreeLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, -1, -1));
 
         instructionsLbl.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         instructionsLbl.setText("Instructions:");
-        jPanel1.add(instructionsLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, -1, -1));
+        backgroundPnl.add(instructionsLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, -1, -1));
 
         messageLbl.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         messageLbl.setText("Welcome to Dan's Dice Denomination Decider, the best dice guessing game");
-        jPanel1.add(messageLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+        backgroundPnl.add(messageLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+
+        guessAgainLbl.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        guessAgainLbl.setForeground(new java.awt.Color(255, 0, 0));
+        backgroundPnl.add(guessAgainLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 130, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
+            .addComponent(backgroundPnl, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(backgroundPnl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -222,9 +219,55 @@ public class DiceGuesser extends javax.swing.JFrame {
     }//GEN-LAST:event_twentySideRBtnActionPerformed
 
     private void guessBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guessBtnActionPerformed
+        //Creating a decimal format
+        DecimalFormat percent = new DecimalFormat("###");
+        //Code exicuted once the guess button is presses
+        //Setting the guessed variable 
+        guess = Integer.parseInt(userIntTxtField.getText());
         
+        //Setiing the random number
         randomNumber = (int)Math.round(Math.random()*choosenDie+1);
-        System.out.println(randomNumber);
+        
+        
+        if (guess < 1){    //Making sure user puts in a useable number
+            userIntTxtField.setText("");
+            guessAgainLbl.setText("Enter A Usable Number");
+            correctGuesses = correctGuesses + 0;
+            incorrectGuesses = incorrectGuesses + 0;
+            diceRolls = diceRolls + 0;
+            guessAgainLbl.setForeground(Color.red);
+        }
+        else if (guess > choosenDie + 1){
+            userIntTxtField.setText("");
+            correctGuesses = correctGuesses + 0;
+            incorrectGuesses = incorrectGuesses + 0;
+            diceRolls = diceRolls + 0;
+            guessAgainLbl.setText("Enter A Usable Number");
+            guessAgainLbl.setForeground(Color.red);
+        }
+        else if (guess == randomNumber){
+            correctGuesses = correctGuesses +1;
+            diceRolls = diceRolls +1; //Making the values of the scores change depending on the guess
+            guessAgainLbl.setText("Correct");
+            guessAgainLbl.setForeground(Color.blue);
+        }
+        else if (guess != randomNumber){
+            incorrectGuesses = incorrectGuesses + 1;
+            diceRolls = diceRolls +1; //Making the values of the scores change depending on the guess
+            guessAgainLbl.setText("Incorrect");
+            guessAgainLbl.setForeground(Color.red);
+        }
+        
+        //setting the percent of correct answers
+        percentCorrectGuesses = ((double)correctGuesses/(double)diceRolls)*100;
+        
+        //Updating the lables to the new values
+        
+        diceRollsNumLbl.setText("" + diceRolls);
+        correctGuessesNumLbl.setText(""+correctGuesses);
+        incorrectGuessesNumLbl.setText(""+incorrectGuesses);
+        percentageCorrectLbl.setText(""+percent.format(percentCorrectGuesses) + "%");
+        System.out.println(percentCorrectGuesses);
     }//GEN-LAST:event_guessBtnActionPerformed
 
     /**
@@ -263,17 +306,15 @@ public class DiceGuesser extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JPanel backgroundPnl;
     private javax.swing.JLabel chooseTypeOfDieLbl;
     private javax.swing.JLabel correctGuessesNumLbl;
     private javax.swing.JLabel diceRollsNumLbl;
     private javax.swing.JRadioButton fortySideRBtn;
+    private javax.swing.JLabel guessAgainLbl;
     private javax.swing.JButton guessBtn;
     private javax.swing.JLabel incorrectGuessesNumLbl;
     private javax.swing.JLabel instructionsLbl;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel messageLbl;
     private javax.swing.JLabel numberOfCorrectGuessesLbl;
     private javax.swing.JLabel numberOfDiceRollsLbl;
